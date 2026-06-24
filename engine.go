@@ -40,6 +40,14 @@ type Lexer struct {
 	Ch byte
 }
 
+func New(input string) *Lexer {
+	//Physical Instance
+	l := &Lexer{Input : input}
+	l.Pos = 0
+	l.Next = 1
+	return l
+}
+
 func main() {
 	
 }
