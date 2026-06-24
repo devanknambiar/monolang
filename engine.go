@@ -9,24 +9,24 @@ type Token struct {
 
 const (
 	// Run-time
-	ILLEGAL = "ILLEGAL"
-	EOF = "EOF"
+	ILLEGAL	TokenType = "ILLEGAL"
+	EOF 	TokenType = "EOF"
 
 	//Operators
-	PLUS = "+"
-	MINUS = "-"
-	ASSIGN = "="
+	PLUS 	TokenType = "+"
+	MINUS 	TokenType = "-"
+	ASSIGN 	TokenType = "="
 
 	//Logical 
-	CHECK = "=="
-	AND = "&&"
-	ORR = "||"
-	NOT = "!"
+	CHECK 	TokenType = "=="
+	AND 	TokenType = "&&"
+	ORR 	TokenType = "||"
+	NOT 	TokenType = "!"
 
 	//Delimiters
-	COMMA = ","
-	COLON = ":"
-	SCOLON = ";"
+	COMMA 	TokenType = ","
+	COLON 	TokenType = ":"
+	SCOLON 	TokenType = ";"
 )
 
 func main() {
