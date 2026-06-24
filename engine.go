@@ -27,6 +27,10 @@ const (
 	COMMA 	TokenType = ","
 	COLON 	TokenType = ":"
 	SCOLON 	TokenType = ";"
+
+	//Identifiers
+	IDENT 	TokenType = "IDENT"
+	INT 	TokenType = "INT"
 )
 
 func main() {
