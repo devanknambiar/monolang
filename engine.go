@@ -33,6 +33,13 @@ const (
 	INT 	TokenType = "INT"
 )
 
+type Lexer struct {
+	Input string
+	Pos int
+	Next int
+	Ch byte
+}
+
 func main() {
 	
 }
