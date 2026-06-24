@@ -1,12 +1,14 @@
 package main
 
-type TokenType string
+type TokenType string //'TokenType' alias
 
+//Token Structure
 type Token struct {
 	Type TokenType
 	Literal string
 }
 
+//Token Vocab
 const (
 	// Run-time
 	ILLEGAL	TokenType = "ILLEGAL"
@@ -33,6 +35,7 @@ const (
 	INT 	TokenType = "INT"
 )
 
+//Lexer Structure
 type Lexer struct {
 	Input string
 	Pos int
@@ -40,6 +43,7 @@ type Lexer struct {
 	Ch byte
 }
 
+//Lexer Constructor
 func New(input string) *Lexer {
 	//Physical Instance
 	l := &Lexer{Input : input}
@@ -49,6 +53,7 @@ func New(input string) *Lexer {
 	return l
 }
 
+//Lexer readChar() Method
 func (l *Lexer) readChar() {
 	if l.Next >= len(l.Input) {
 		l.Ch = 0
