@@ -44,8 +44,19 @@ func New(input string) *Lexer {
 	//Physical Instance
 	l := &Lexer{Input : input}
 	l.Pos = 0
-	l.Next = 1
+	l.Next = 0 //Modification: For the 0th character
+	l.readChar()
 	return l
+}
+
+func (l *Lexer) readChar() {
+	if l.Next >= len(l.Input) {
+		l.Ch = 0
+		return
+	} 
+	l.Ch = l.Input[l.Next]
+	l.Pos = l.Next
+	l.Next += 1
 }
 
 func main() {
