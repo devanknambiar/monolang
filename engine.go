@@ -7,6 +7,28 @@ type Token struct {
 	Literal string
 }
 
+const (
+	// Run-time
+	ILLEGAL = "ILLEGAL"
+	EOF = "EOF"
+
+	//Operators
+	PLUS = "+"
+	MINUS = "-"
+	ASSIGN = "="
+
+	//Logical 
+	CHECK = "=="
+	AND = "&&"
+	ORR = "||"
+	NOT = "!"
+
+	//Delimiters
+	COMMA = ","
+	COLON = ":"
+	SCOLON = ";"
+)
+
 func main() {
 	
 }
