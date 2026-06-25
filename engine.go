@@ -53,7 +53,7 @@ func New(input string) *Lexer {
 	return l
 }
 
-//Lexer readChar() Method
+//Lexer readChar() Method - void
 func (l *Lexer) readChar() {
 	if l.Next >= len(l.Input) {
 		l.Ch = 0
@@ -62,6 +62,27 @@ func (l *Lexer) readChar() {
 	l.Ch = l.Input[l.Next]
 	l.Pos = l.Next
 	l.Next += 1
+}
+
+//Lexer NextToken() Method - Token
+func (l *Lexer) NextToken() Token {
+	var t Token
+
+	switch l.Ch {
+	case '+':
+		t.Type = PLUS
+		t.Literal = string(l.Ch)
+	case '=':
+		t.Type = ASSIGN
+		t.Literal = string(l.Ch)
+	case '-':
+		t.Type = MINUS
+		t.Literal = string(l.Ch)
+	}
+
+	l.readChar()
+
+	return t
 }
 
 func main() {
