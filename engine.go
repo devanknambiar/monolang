@@ -19,6 +19,9 @@ const (
 	MINUS 	TokenType = "-"
 	ASSIGN 	TokenType = "="
 
+	//Bitwise
+	BAND	TokenType = "&"
+
 	//Logical 
 	CHECK 	TokenType = "=="
 	AND 	TokenType = "&&"
