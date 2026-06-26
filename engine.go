@@ -89,6 +89,10 @@ func (l *Lexer) NextToken() Token {
 	var t Token
 
 	switch l.Ch {
+	case 0:
+		t.Type = EOF
+		t.Literal = string(l.Ch)
+		
 	case '+':
 		t.Type = PLUS
 		t.Literal = string(l.Ch)
@@ -122,6 +126,22 @@ func (l *Lexer) NextToken() Token {
 			t.Type = BORR
 			t.Literal = string(l.Ch)
 		}
+	
+	case ';':
+		t.Type = SCOLON
+		t.Literal = string(l.Ch)
+		
+	case ':':
+		t.Type = COLON
+		t.Literal = string(l.Ch)
+	
+	case ',':
+		t.Type = COMMA
+		t.Literal = string(l.Ch)
+	
+	case '!':
+		t.Type = NOT
+		t.Literal = string(l.Ch)
 	
 	case '-':
 		t.Type = MINUS
