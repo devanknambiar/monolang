@@ -67,8 +67,16 @@ func (l *Lexer) readChar() {
 	l.Next += 1
 }
 
+//Lexer skipWhitespace() Method - void
+func (l *Lexer) skipWhitespace() {
+	for l.Ch == ' ' || l.Ch == '\n' || l.Ch == '\t' || l.Ch == '\r' {
+		l.readChar()
+	}
+}
+
 //Lexer NextToken() Method - Token
 func (l *Lexer) NextToken() Token {
+	l.skipWhitespace()
 	var t Token
 
 	switch l.Ch {
