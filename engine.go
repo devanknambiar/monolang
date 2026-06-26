@@ -25,6 +25,7 @@ const (
 
 	//Logical 
 	CHECK 	TokenType = "=="
+	NOT_EQ	TokenType = "!="
 	AND 	TokenType = "&&"
 	ORR 	TokenType = "||"
 	NOT 	TokenType = "!"
@@ -92,7 +93,7 @@ func (l *Lexer) NextToken() Token {
 	case 0:
 		t.Type = EOF
 		t.Literal = string(l.Ch)
-		
+
 	case '+':
 		t.Type = PLUS
 		t.Literal = string(l.Ch)
@@ -140,8 +141,14 @@ func (l *Lexer) NextToken() Token {
 		t.Literal = string(l.Ch)
 	
 	case '!':
-		t.Type = NOT
-		t.Literal = string(l.Ch)
+		if l.peekChar() == '=' {
+			t.Type = NOT_EQ
+			t.Literal = "!="
+			l.readChar()
+		} else {
+			t.Type = NOT
+			t.Literal = string(l.Ch)
+		}
 	
 	case '-':
 		t.Type = MINUS
