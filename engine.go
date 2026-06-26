@@ -74,6 +74,14 @@ func (l *Lexer) skipWhitespace() {
 	}
 }
 
+//Lexer peekChar() Method - byte
+func (l *Lexer) peekChar() byte {
+	if l.Next >= len(l.Input) {
+		return 0
+	}
+	return l.Input[l.Next]
+}
+
 //Lexer NextToken() Method - Token
 func (l *Lexer) NextToken() Token {
 	l.skipWhitespace()
