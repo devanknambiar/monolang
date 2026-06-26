@@ -153,6 +153,10 @@ func (l *Lexer) NextToken() Token {
 	case '-':
 		t.Type = MINUS
 		t.Literal = string(l.Ch)
+
+	default:
+		t.Type = ILLEGAL
+		t.Literal = string(l.Ch)
 	}
 
 	l.readChar()
