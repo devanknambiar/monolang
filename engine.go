@@ -21,6 +21,7 @@ const (
 
 	//Bitwise
 	BAND	TokenType = "&"
+	BORR	TokenType = "|"
 
 	//Logical 
 	CHECK 	TokenType = "=="
@@ -91,9 +92,37 @@ func (l *Lexer) NextToken() Token {
 	case '+':
 		t.Type = PLUS
 		t.Literal = string(l.Ch)
+	
 	case '=':
-		t.Type = ASSIGN
-		t.Literal = string(l.Ch)
+		if l.peekChar() == '=' {
+			t.Type = CHECK
+			t.Literal = "=="
+			l.readChar()
+		} else {
+			t.Type = ASSIGN
+			t.Literal = string(l.Ch)
+		}
+	
+	case '&':
+		if l.peekChar() == '&' {
+			t.Type = AND
+			t.Literal = "&&"
+			l.readChar()
+		} else {
+			t.Type = BAND
+			t.Literal = string(l.Ch)
+		}
+	
+	case '|':
+		if l.peekChar() == '|' {
+			t.Type = ORR
+			t.Literal = "||"
+			l.readChar()
+		} else {
+			t.Type = BORR
+			t.Literal = string(l.Ch)
+		}
+	
 	case '-':
 		t.Type = MINUS
 		t.Literal = string(l.Ch)
