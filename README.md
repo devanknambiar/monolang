@@ -18,18 +18,18 @@ The goal of this project is to gain a deeper understanding of compiler construct
 * Character stream traversal
 * Basic operator tokenization
 * Incremental project structure and documentation
-
-### In Progress
-
 * Identifier tokenization
 * Integer literals
 * Whitespace handling
 * Multi-character operators (`==`, `&&`, `||`, etc.)
 
-### Planned
-
+### In Progress
 * Parser
 * Abstract Syntax Tree (AST)
+
+
+### Planned
+
 * Tree-walking evaluator
 * Static type checker
 * Variables and expressions
@@ -69,8 +69,8 @@ monolang/
 * [x] Project initialization
 * [x] Token definitions
 * [x] Lexer implementation
-* [ ] Identifier parsing
-* [ ] Numeric literals
+* [x] Identifier parsing
+* [x] Numeric literals
 * [ ] Parser
 * [ ] AST
 * [ ] Expression evaluation
