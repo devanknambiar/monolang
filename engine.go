@@ -209,14 +209,8 @@ func (l *Lexer) NextToken() Token {
 
 	default:
 		if isLetter(l.Ch) {
-			checkLiteral := l.readIdentifier()
-			checkType := LookupIdent(checkLiteral)
-			t.Literal = checkLiteral
-			if checkType == IDENT {
-				t.Type = IDENT
-			} else {
-				t.Type = checkType
-			}
+			t.Literal = l.readIdentifier()
+			t.Type = LookupIdent(t.Literal)
 			return t
 		} else if isDigit(l.Ch) {
 			t.Literal = l.readDigit()
