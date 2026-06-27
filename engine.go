@@ -203,5 +203,13 @@ func (l *Lexer) NextToken() Token {
 }
 
 func main() {
-	
+	input := `let result = 105;`
+	l := New(input)
+	for {
+		t := l.NextToken()
+		println("Type: ", t.Type, "& Literal: ", t.Literal)
+		if t.Type == EOF {
+			break
+		}
+	}
 }
