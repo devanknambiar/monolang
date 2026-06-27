@@ -1,52 +1,5 @@
 package main
 
-type TokenType string //'TokenType' alias
-
-//Token Structure
-type Token struct {
-	Type TokenType
-	Literal string
-}
-
-//Token Vocab
-const (
-	// Run-time
-	ILLEGAL	TokenType = "ILLEGAL"
-	EOF 	TokenType = "EOF"
-
-	//Operators
-	PLUS 	TokenType = "+"
-	MINUS 	TokenType = "-"
-	ASSIGN 	TokenType = "="
-
-	//Bitwise
-	BAND	TokenType = "&"
-	BORR	TokenType = "|"
-
-	//Logical 
-	CHECK 	TokenType = "=="
-	NOT_EQ	TokenType = "!="
-	AND 	TokenType = "&&"
-	ORR 	TokenType = "||"
-	NOT 	TokenType = "!"
-
-	//Delimiters
-	COMMA 	TokenType = ","
-	COLON 	TokenType = ":"
-	SCOLON 	TokenType = ";"
-
-	//Identifiers
-	IDENT 	TokenType = "IDENT"
-	DIGIT 	TokenType = "DIGIT"
-
-	//Keywords
-	LET		TokenType = "LET"
-	IF 		TokenType = "IF"
-	ELSE	TokenType = "ELSE"
-	TRUE	TokenType = "TRUE"
-	FALSE	TokenType = "FALSE"
-)
-
 //Lexer Structure
 type Lexer struct {
 	Input string
@@ -117,24 +70,6 @@ func (l *Lexer) readDigit() string {
 		l.readChar()
 	}
 	return l.Input[startPos : l.Pos]
-}
-
-//keywords map
-var keywords = map[string]TokenType {
-	"let" 	: LET,
-	"if"	: IF,
-	"else"	: ELSE,
-	"true"	: TRUE,
-	"false"	: FALSE,
-}
-
-//helper function LookupIdent(ident string) - TokenType
-func LookupIdent(ident string) TokenType {
-	value, ok := keywords[ident]
-	if ok {
-		return value
-	}
-	return IDENT
 }
 
 //Lexer NextToken() Method - Token
@@ -225,23 +160,4 @@ func (l *Lexer) NextToken() Token {
 	l.readChar()
 
 	return t
-}
-
-func main() {
-	input := `let alpha_1 = 54;
-			if (alpha_1 == 54) {
-				let target = true;
-			} else {
-				let target = false;
-			}
-			alpha_1 != 100;
-			`
-	l := New(input)
-	for {
-		t := l.NextToken()
-		println("Type: ", t.Type, "& Literal: ", t.Literal)
-		if t.Type == EOF {
-			break
-		}
-	}
 }
