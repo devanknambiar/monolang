@@ -119,6 +119,15 @@ func (l *Lexer) readDigit() string {
 	return l.Input[startPos : l.Pos]
 }
 
+//keywords map
+var keywords = map[string]TokenType {
+	"let" 	: LET,
+	"if"	: IF,
+	"else"	: ELSE,
+	"true"	: TRUE,
+	"false"	: FALSE,
+}
+
 //Lexer NextToken() Method - Token
 func (l *Lexer) NextToken() Token {
 	l.skipWhitespace()
