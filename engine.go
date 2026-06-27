@@ -37,7 +37,7 @@ const (
 
 	//Identifiers
 	IDENT 	TokenType = "IDENT"
-	INT 	TokenType = "INT"
+	DIGIT 	TokenType = "DIGIT"
 )
 
 //Lexer Structure
@@ -92,6 +92,24 @@ func isLetter(ch byte) bool {
 //Helper function isDigit(ch byte) - bool
 func isDigit(ch byte) bool {
 	return '0' <= ch && ch <= '9'
+}
+
+//Lexer readIdentifier() Method - string
+func (l *Lexer) readIdentifier() string {
+	startPos := l.Pos
+	for isLetter(l.Ch) {
+		l.readChar()
+	}
+	return l.Input[startPos : l.Pos]
+}
+
+//Lexer readDigit() Method - string
+func (l *Lexer) readDigit() string {
+	startPos := l.Pos
+	for isDigit(l.Ch) {
+		l.readChar()
+	}
+	return l.Input[startPos : l.Pos]
 }
 
 //Lexer NextToken() Method - Token
