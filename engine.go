@@ -104,7 +104,7 @@ func isDigit(ch byte) bool {
 //Lexer readIdentifier() Method - string
 func (l *Lexer) readIdentifier() string {
 	startPos := l.Pos
-	for isLetter(l.Ch) {
+	for isLetter(l.Ch) || isDigit(l.Ch) {
 		l.readChar()
 	}
 	return l.Input[startPos : l.Pos]
@@ -228,7 +228,14 @@ func (l *Lexer) NextToken() Token {
 }
 
 func main() {
-	input := `let result = 105;`
+	input := `let alpha_1 = 54;
+			if (alpha_1 == 54) {
+				let target = true;
+			} else {
+				let target = false;
+			}
+			alpha_1 != 100;
+			`
 	l := New(input)
 	for {
 		t := l.NextToken()
