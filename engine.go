@@ -183,8 +183,18 @@ func (l *Lexer) NextToken() Token {
 		t.Literal = string(l.Ch)
 
 	default:
-		t.Type = ILLEGAL
-		t.Literal = string(l.Ch)
+		if isLetter(l.Ch) {
+			t.Literal = l.readIdentifier()
+			t.Type = IDENT
+			return t
+		} else if isDigit(l.Ch) {
+			t.Literal = l.readDigit()
+			t.Type = DIGIT
+			return t
+		} else {
+			t.Type = ILLEGAL
+			t.Literal = string(l.Ch)
+		}
 	}
 
 	l.readChar()
