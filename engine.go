@@ -38,6 +38,13 @@ const (
 	//Identifiers
 	IDENT 	TokenType = "IDENT"
 	DIGIT 	TokenType = "DIGIT"
+
+	//Keywords
+	LET		TokenType = "LET"
+	IF 		TokenType = "IF"
+	ELSE	TokenType = "ELSE"
+	TRUE	TokenType = "TRUE"
+	FALSE	TokenType = "FALSE"
 )
 
 //Lexer Structure
