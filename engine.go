@@ -128,6 +128,15 @@ var keywords = map[string]TokenType {
 	"false"	: FALSE,
 }
 
+//helper function LookupIdent(ident string) - TokenType
+func LookupIdent(ident string) TokenType {
+	value, ok := keywords[ident]
+	if ok {
+		return value
+	}
+	return IDENT
+}
+
 //Lexer NextToken() Method - Token
 func (l *Lexer) NextToken() Token {
 	l.skipWhitespace()
@@ -200,8 +209,14 @@ func (l *Lexer) NextToken() Token {
 
 	default:
 		if isLetter(l.Ch) {
-			t.Literal = l.readIdentifier()
-			t.Type = IDENT
+			checkLiteral := l.readIdentifier()
+			checkType := LookupIdent(checkLiteral)
+			t.Literal = checkLiteral
+			if checkType == IDENT {
+				t.Type = IDENT
+			} else {
+				t.Type = checkType
+			}
 			return t
 		} else if isDigit(l.Ch) {
 			t.Literal = l.readDigit()
