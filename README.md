@@ -98,4 +98,4 @@ This project draws inspiration from several excellent resources on compiler and 
 
 ## License
 
-MIT License
+BSD 3-Clause License
