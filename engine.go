@@ -84,6 +84,16 @@ func (l *Lexer) peekChar() byte {
 	return l.Input[l.Next]
 }
 
+//Helper function isLetter(ch byte) - bool
+func isLetter(ch byte) bool {
+	return 'a' <= ch && ch <= 'z' || 'A' <= ch && ch <= 'Z' || ch == '_'
+}
+
+//Helper function isDigit(ch byte) - bool
+func isDigit(ch byte) bool {
+	return '0' <= ch && ch <= '9'
+}
+
 //Lexer NextToken() Method - Token
 func (l *Lexer) NextToken() Token {
 	l.skipWhitespace()
