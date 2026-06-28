@@ -28,3 +28,26 @@ func (p *Program) TokenLiteral() string {
 		return ""
 	}
 }
+
+type Identifier struct {
+	Token Token
+	Value string
+}
+
+func (i *Identifier) TokenLiteral() string {
+	return i.Token.Literal
+}
+
+func (i *Identifier) expressionNode() {}
+
+type LetStatement struct {
+	Token Token
+	Name *Identifier
+	Value Expression
+}
+
+func (ls *LetStatement) TokenLiteral() string {
+	return ls.Token.Literal
+}
+
+func (ls *LetStatement) statementNode() {}
