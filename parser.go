@@ -37,6 +37,15 @@ func (p *Parser) ParseProgram() *Program {
 	return program
 }
 
+//helper func to evaluate syntax errors
+func (p *Parser) expectPeek(t TokenType) bool {
+	if p.peekToken.Type == t {
+		p.nextToken()
+		return true
+	} 
+	return false
+}
+
 //parseStatement() method - Statement
 func (p *Parser) parseStatement() Statement {
 	switch p.curToken.Type {
