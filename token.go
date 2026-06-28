@@ -45,15 +45,17 @@ const (
 	ELSE	TokenType = "ELSE"
 	TRUE	TokenType = "TRUE"
 	FALSE	TokenType = "FALSE"
+	RETURN 	TokenType = "RETURN"
 )
 
 //keywords map
 var keywords = map[string]TokenType {
-	"let" 	: LET,
-	"if"	: IF,
-	"else"	: ELSE,
-	"true"	: TRUE,
-	"false"	: FALSE,
+	"let" 		: LET,
+	"if"		: IF,
+	"else"		: ELSE,
+	"true"		: TRUE,
+	"false"		: FALSE,
+	"return"	: RETURN,
 }
 
 //helper function LookupIdent(ident string) - TokenType
