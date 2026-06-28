@@ -17,6 +17,7 @@ type Expression interface {
 	expressionNode() //dummy marker
 }
 
+//Program - a collection of Statements
 type Program struct {
 	Statements []Statement
 }
@@ -29,6 +30,7 @@ func (p *Program) TokenLiteral() string {
 	}
 }
 
+//Identifier Node & its methods
 type Identifier struct {
 	Token Token
 	Value string
@@ -40,6 +42,7 @@ func (i *Identifier) TokenLiteral() string {
 
 func (i *Identifier) expressionNode() {}
 
+//LetStaemment Node & its methods
 type LetStatement struct {
 	Token Token
 	Name *Identifier
@@ -52,6 +55,7 @@ func (ls *LetStatement) TokenLiteral() string {
 
 func (ls *LetStatement) statementNode() {}
 
+//ReturnStaemment Node & its methods
 type ReturnStatement struct {
 	Token Token
 	Value Expression
