@@ -20,6 +20,23 @@ func NewParser(l *Lexer) *Parser {
 	return p
 } 
 
+//Kick-start Program
+func (p *Parser) ParseProgram() *Program {
+	program := &Program{
+		Statements: []Statement{},
+	}
+	
+	for p.curToken.Type != EOF {
+		statement := p.parseStatement()
+		if statement != nil {
+			program.Statements = append(program.Statements, statement)
+		}
+		p.nextToken()
+	}
+	
+	return program
+}
+
 //parseStatement() method - Statement
 func (p *Parser) parseStatement() Statement {
 	switch p.curToken.Type {
@@ -38,6 +55,6 @@ func (p *Parser) parseLetStatement() *LetStatement {
 	return nil
 }
 
-func (p *Parser) parseReturnStatement() *LetStatement {
+func (p *Parser) parseReturnStatement() *ReturnStatement {
 	return nil
 }
