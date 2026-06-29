@@ -60,10 +60,35 @@ func (p *Parser) parseStatement() Statement {
 	}
 }
 
+//LetStatement Constructor
 func (p *Parser) parseLetStatement() *LetStatement {
-	return nil
+	ls := &LetStatement{Token: p.curToken}
+
+	if !p.expectPeek(IDENT) {
+		return nil
+	}
+	ls.Name = &Identifier{
+		Token: p.curToken,
+		Value: p.curToken.Literal,
+	}
+
+	if !p.expectPeek(ASSIGN) {
+		return nil
+	}
+
+	for p.curToken.Type != SCOLON {
+		p.nextToken()
+	}
+	return ls
 }
 
 func (p *Parser) parseReturnStatement() *ReturnStatement {
-	return nil
+	rs := &ReturnStatement{Token: p.curToken}
+
+	p.nextToken()
+
+	for p.curToken.Type != SCOLON {
+		p.nextToken()
+	}
+	return rs
 }
